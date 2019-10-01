@@ -23,6 +23,18 @@ module.exports = {
       {
         test: /\.css$/,
         use: [ "style-loader", "css-loader" ]
+      },
+      {
+        test: /\.ttf$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: './src/css/[hash].[ext]',
+              outputPath: 'fonts/'
+            },
+          },
+        ]
       }
     ]
   },

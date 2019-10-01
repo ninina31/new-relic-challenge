@@ -1,14 +1,71 @@
+@font-face {
+  font-family: "HelveticaNeue-Bold";
+  src: url(./helvetica-neue-bold.ttf);
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url(./helvetica-neue.ttf);
+  font-style: normal;
+  font-weight: normal;
+}
+
+:root {
+  /* colors */
+  --lightGray: #e6e6e6;
+  --white: #fff;
+  --black: #000;
+  --gray: #4a4a4a;
+  /* sizes */
+  --gutter: 30px;
+  --gutter-sm: 23px;
+  --checkbox-size: 16px;
+  --checkbox-mark: 10px;
+  /* fonts */
+  --font-xlarge: 35px;
+  --font-large: 18px;
+  --font-normal: 16px;
+  --font-small: 13px;
+}
+
 .main {
-  background-color: aliceblue;
+  background-color: var(--lightGray);
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
-  height: 100%;
+  font-family: "HelveticaNeue", sans-serif;
 }
 
 .hosts {
   width: 840px;
+  margin: 0 auto;
 }
 
 .host {
   width: 375px;
   display: inline-block;
+  background-color: white;
+  padding: 30px;
+  margin: 30px;
+}
+
+.host--list {
+  width: 780px;
+}
+
+ul.host__apps-container {
+  list-style: none;
+  padding: 0;
+}
+
+.host__title {
+  margin-top: 0;
+  margin-bottom: 23px;
+}
+
+.host__apps-container__item {
+
 }

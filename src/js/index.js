@@ -1,11 +1,13 @@
-import Hosts from './classes/hosts';
-import applications from './utils/mocks/host-app-data.json';
-import render from './templates';
+import Hosts from './classes/hostCollection'
+import applications from './utils/mocks/host-app-data.json'
+import views from './views'
+import render from './utils/render'
 
-import '../css/index.css';
+import '../css/index.css'
 
 (() => {
-  const hosts = new Hosts(applications);
-  document.getElementById('root').innerHTML = render.getTemplate(hosts);
-  
-})();
+  const hosts = new Hosts(applications)
+  const template = views.getTemplate(hosts)
+  render(template)
+  views.addEventListeners()
+})()
