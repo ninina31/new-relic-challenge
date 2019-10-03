@@ -41,7 +41,7 @@ Special consideration: linked lists are more efficient to maintain the collectio
 In theory everything sounds really good, but when it comes with the practice numbers don't lie. As your can see, for arrays it's more efficient to add and remove elements, but when it comes to getting top applications linked lists are slightly better. Why is not a lot better? Arrays are primitive structures and browsers frequently optimize their code, so that's probably why my implementation of linked lists doesn't cut it.
 
 For Arrays:
-
+```
 removeAppFromHosts:
 0.123046875
 0.1142578125
@@ -77,9 +77,9 @@ getTopAppsByHost:
 0.322021484375ms
 0.35693359375ms
 0.698974609375ms
-
+```
 For Linked Lists:
-
+```
 removeAppFromHosts:
 3.913818359375ms
 3.476318359375ms
@@ -115,7 +115,7 @@ getTopAppsByHost:
 0.01220703125ms
 0.016845703125ms
 0.01318359375ms
-
+```
 ### Considerations
 * Applications don't repeat
 * On the index file you can find some working examples on how to use addAppToHosts and removeAppFromHosts
