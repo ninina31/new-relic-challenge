@@ -6,7 +6,7 @@ import Node from './node'
 
 export default class LinkedList {
   constructor() {
-    this.head = null
+    this.next = null
   }
 
   /**
@@ -17,12 +17,12 @@ export default class LinkedList {
   add(data) {
     const node = new Node(data)
 
-    let pointer = this.head
+    let pointer = this.next
 
     // If element has max apdex, attaches it on the beginning
-    if(!pointer || node.data.apdex > this.head.data.apdex){
-      node.next = this.head
-      this.head = node
+    if(!pointer || node.data.apdex > this.next.data.apdex){
+      node.next = this.next
+      this.next = node
       return
     }
     
@@ -43,27 +43,25 @@ export default class LinkedList {
   * @return undefined
   */
   remove(data) {
-    let pointer = this.head
-    
-    // If the list is empty, does nothing
-    if(!pointer){
-      return
+    this.next = this._recursiveDelete(this.next, data.name)
+  }
+
+  _recursiveDelete(node, name){
+
+    // Base case
+    if(!node){
+      return null
     }
-    
-    // If the list has one element and it's the one, assign null to head
-    if(data.name === this.head.data.name){
-      this.head = this.head.next
-      return
+
+    // If it finds the element, returns the next element
+    if(node.data.name === name) {
+      return node.next
     }
-    
-    // Searches for element
-    while(pointer.next && pointer.next.data.name != data.name){
-      pointer = pointer.next
-    }
-    
-    if(pointer.next){
-      pointer.next = pointer.next.next
-    }
+
+    // Assigns recursive value to next node
+    node.next = this._recursiveDelete(node.next, name)
+
+    return node
   }
 
   /**
@@ -73,7 +71,7 @@ export default class LinkedList {
   */
   slice(howMany) {
     let collection = []
-    let pointer = this.head
+    let pointer = this.next
     let counter = 0
 
     // If list is empty, returns emtpy array
@@ -81,7 +79,7 @@ export default class LinkedList {
     
     // If list has one element, returns it
     if(!pointer.next) {
-      collection.push(this.head.data)
+      collection.push(this.next.data)
       return collection
     }
     

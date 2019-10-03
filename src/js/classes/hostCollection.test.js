@@ -79,7 +79,7 @@ describe('#HostCollection', () => {
       
       it('creates new HostModel', () => {
         const model = hostCollection.collection[hostName]
-        expect(model.applications.head).toBeNull()
+        expect(model.applications.next).toBeNull()
       })
       
       it('calls to add application', () => {
@@ -97,7 +97,7 @@ describe('#HostCollection', () => {
       
       it('uses previosly created model', () => {
         const model = hostCollection.collection[hostName]
-        expect(model.applications.head).not.toBeNull()
+        expect(model.applications.next).not.toBeNull()
       })
       
       it('calls to add application', () => {

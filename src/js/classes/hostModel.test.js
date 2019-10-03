@@ -30,7 +30,7 @@ describe('#HostModel', () => {
       expect(hostModel.name).toBe(hostName)
     })
     it('initialize empty linked list for applications collection', () => {
-      expect(hostModel.applications.head).toBeNull()
+      expect(hostModel.applications.next).toBeNull()
     })
   })
 

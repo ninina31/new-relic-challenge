@@ -1,5 +1,4 @@
 import LinkedList from './linkedList'
-import Node from './node'
 
 describe('#LinkedList', () => {
   let linkedList
@@ -13,8 +12,8 @@ describe('#LinkedList', () => {
   }) 
 
   describe('constructor', () => {
-    it('initialised with null head', () => {
-      expect(linkedList.head).toBeNull()
+    it('initialised with null next', () => {
+      expect(linkedList.next).toBeNull()
     })
   })
   
@@ -41,8 +40,8 @@ describe('#LinkedList', () => {
       })
 
       it('is first and last element', () => {
-        expect(linkedList.head.data).toBe(application1)
-        expect(linkedList.head.next).toBeNull()
+        expect(linkedList.next.data).toBe(application1)
+        expect(linkedList.next.next).toBeNull()
       })
     })
     
@@ -53,11 +52,11 @@ describe('#LinkedList', () => {
       })
 
       it('first element is in the right place', () => {
-        expect(linkedList.head.data).toBe(application2)
+        expect(linkedList.next.data).toBe(application2)
       })
 
       it('next element is in the right place', () => {
-        expect(linkedList.head.next.data).toBe(application1)
+        expect(linkedList.next.next.data).toBe(application1)
       })
     })
 
@@ -69,15 +68,15 @@ describe('#LinkedList', () => {
       })
 
       it('first element is sorted', () => {
-        expect(linkedList.head.data).toBe(application2)
+        expect(linkedList.next.data).toBe(application2)
       })
 
       it('next element is in the right place', () => {
-        expect(linkedList.head.next.data).toBe(application1)
+        expect(linkedList.next.next.data).toBe(application1)
       })
 
       it('last element is in the right place', () => {
-        expect(linkedList.head.next.next.data).toBe(application3)
+        expect(linkedList.next.next.next.data).toBe(application3)
       })
     })
   })
@@ -104,7 +103,7 @@ describe('#LinkedList', () => {
       })
 
       it('does nothing', () => {
-        expect(linkedList.head).toBeNull()
+        expect(linkedList.next).toBeNull()
       })
     })
     
@@ -115,7 +114,7 @@ describe('#LinkedList', () => {
       })
 
       it('empties list', () => {
-        expect(linkedList.head).toBeNull()
+        expect(linkedList.next).toBeNull()
       })
     })
 
@@ -128,11 +127,11 @@ describe('#LinkedList', () => {
       })
 
       it('first element is sorted', () => {
-        expect(linkedList.head.data).toBe(application2)
+        expect(linkedList.next.data).toBe(application2)
       })
 
       it('next element is in the right place', () => {
-        expect(linkedList.head.next.data).toBe(application3)
+        expect(linkedList.next.next.data).toBe(application3)
       })
     })
     
@@ -145,15 +144,15 @@ describe('#LinkedList', () => {
       })
 
       it('first element is sorted', () => {
-        expect(linkedList.head.data).toBe(application2)
+        expect(linkedList.next.data).toBe(application2)
       })
 
       it('next element is in the right place', () => {
-        expect(linkedList.head.next.data).toBe(application1)
+        expect(linkedList.next.next.data).toBe(application1)
       })
 
       it('last element doesnt exist', () => {
-        expect(linkedList.head.next.next).toBeNull()
+        expect(linkedList.next.next.next).toBeNull()
       })
     })
   })
