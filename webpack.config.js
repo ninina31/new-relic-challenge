@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+const autoprefixer = require("autoprefixer");
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -25,7 +27,8 @@ module.exports = {
         use: [
           "style-loader",
           "css-loader",
-          'postcss-loader']
+          'postcss-loader'
+        ]
       },
       {
         test: /\.ttf$/,
@@ -33,7 +36,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'fonts/[hash].[ext]',
+              name: '[hash].[ext]',
               outputPath: 'fonts/'
             },
           },
@@ -46,6 +49,13 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+          postcss: [
+              autoprefixer()
+          ]
+      }
     })
   ],
 

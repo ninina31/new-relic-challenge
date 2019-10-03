@@ -39,7 +39,7 @@ export default class Hosts {
   * @param number howManyy - how many items it is desired to return
   * @return [Object] - Top howManu applications sorted from highest to lowest apdex
   */
-  getTopAppsByHost(hostname, howMany) {
+  getTopAppsByHost(hostname, howMany = 25) {
     return this.collection[hostname].getTopAppsByHost(howMany)
   }
 
