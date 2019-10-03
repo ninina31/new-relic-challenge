@@ -28,7 +28,7 @@ npm run test
 ```
 
 ### Complexity
-I decided to use linked lists to implement a sorted collection for the applications on each host. Supposing we can add and remove applications from hosts at runtime, it's convenient to have the collection already sorted. The add and remove actions have complexity O(n) where n is the number of applications per host (it adds and removes elements and maintains the array sorted), but when it comes to get the first N elements of the array, the complexity for this task is O(n). When we compare it to arrays, add and remove have complexity O(1) but sorting the array is O(nlog(n)). So in the case we're adding and removing applications from the hosts, in the end it's better to have linked lists :)
+I decided to use linked lists to implement a sorted collection for the applications on each host. Supposing the main function that is going to be executed is to get top apps from hosts, it's convenient to have the collection already sorted. The add and remove actions have complexity O(n) where n is the number of applications per host (it adds and removes elements and maintains the array sorted), but when it comes to get the top elements of the collection, the complexity for this task is O(n). When we compare it to arrays, add and remove have complexity O(1) but sorting the array is O(nlog(n)). So in the case we're getting the top applications regularly, in the end it's better to have linked lists :)
 
 Special consideration: linked lists are more efficient to maintain the collection sorted, but consumes more memory (it has to save the chain references). If you prefer to impact performance instead of memory, use arrays.
 

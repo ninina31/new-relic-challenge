@@ -20,16 +20,17 @@ const updateDOM = (hosts) => {
 (() => {
 
   const renderIndex = (applications) => {
+
     // Create Host Collection (here the applications are parsed and loaded to the collection)
     const hosts = new Hosts(applications)
-    
+
     // Updates DOM
     updateDOM(hosts)
 
     // To test adding a new application, uncomment next code, when you do,
     // you'll see the app Test Andreina on each host :)
 
-    /* const application = {
+    /*const application = {
       name: 'Test Andreina',
       apdex: 100,
       version: 9
@@ -37,7 +38,7 @@ const updateDOM = (hosts) => {
 
     hosts.addAppToHosts(application)
 
-    updateDOM(hosts) */
+    updateDOM(hosts)*/
 
     // To test removing an old application, uncomment next code. We you do, you
     // no longer see the Awesome Wooden Sausages - Schaefer - Hegmann, Inc application
@@ -48,7 +49,6 @@ const updateDOM = (hosts) => {
     hosts.removeAppFromHosts(application)
 
     updateDOM(hosts)*/
-
   }
 
   // Simulate request
