@@ -15,6 +15,9 @@ describe('#HostModel', () => {
     it('initialize empty array for applications collection', () => {
       expect(hostModel.applications.length).toBe(0)
     })
+    it('sorted attribute is initialised with false', () => {
+      expect(hostModel._isSorted).toBe(false)
+    })
   })
 
   describe('#addApplication', () => {
@@ -30,6 +33,10 @@ describe('#HostModel', () => {
 
     it('adds application to the applications collection', () => {
       expect(hostModel.applications.indexOf(application)).toBeGreaterThan(-1)
+    })
+
+    it('sorted flag is false', () => {
+      expect(hostModel._isSorted).toBe(false)
     })
   })
   
@@ -92,6 +99,10 @@ describe('#HostModel', () => {
     it('sorts applications on the applications collection', () => {
       expect(hostModel.applications[0]).toBe(application2)
     })
+    
+    it('sorted attribute is true', () => {
+      expect(hostModel._isSorted).toBe(true)
+    })
   })
 
   describe('#getTopAppsByHost', () => {
@@ -113,19 +124,45 @@ describe('#HostModel', () => {
     
     let result
 
-    beforeEach(() => {
-      hostModel.addApplication(application1)
-      hostModel.addApplication(application2)
-      hostModel.addApplication(application3)
-      result = hostModel.getTopAppsByHost(2)
+    describe('when sorted attribute is true', () => {
+      beforeEach(() => {
+        hostModel.addApplication(application1)
+        hostModel.addApplication(application2)
+        hostModel.addApplication(application3)
+        jest.spyOn(hostModel, 'sortApplications')
+        hostModel._isSorted = true
+        result = hostModel.getTopAppsByHost(2)
+      })
+      
+      it('doesnt sort elements', () => {
+        expect(hostModel.sortApplications).not.toHaveBeenCalled()
+      })
+      
+      it('returns correct number of elements', () => {
+        expect(result.length).toBe(2)
+      })
     })
-
-    it('returns correct number of elements', () => {
-      expect(result.length).toBe(2)
-    })
-    it('returns correct elements', () => {
-      expect(result[0]).toBe(application2)
-      expect(result[1]).toBe(application1)
+    describe('when sorted attribute is false', () => {
+      beforeEach(() => {
+        hostModel.addApplication(application1)
+        hostModel.addApplication(application2)
+        hostModel.addApplication(application3)
+        jest.spyOn(hostModel, 'sortApplications')
+        result = hostModel.getTopAppsByHost(2)
+      })
+      
+      it('sorts elements', () => {
+        expect(hostModel.sortApplications).toHaveBeenCalled()
+      })
+    
+      it('returns correct number of elements', () => {
+        expect(result.length).toBe(2)
+      })
+      
+      it('returns correct elements', () => {
+        expect(result[0]).toBe(application2)
+        expect(result[1]).toBe(application1)
+      })
     })
   })
 })

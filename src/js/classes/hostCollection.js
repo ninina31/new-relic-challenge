@@ -70,7 +70,7 @@ export default class Hosts {
   removeAppFromHosts(application) {
     this.getHostsNames().forEach((hostname) => {
       let collection = this.collection[hostname]
-      collection.removeApplication(hostname, application)
+      collection.removeApplication(application)
     })
   }
 }

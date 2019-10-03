@@ -19,6 +19,7 @@
   --black: #000;
   --gray: #4a4a4a;
   --lightGray: #e6e6e6;
+  --green: #26ca28;
 
   --font-xlarge: 35px;
   --font-large: 18px;
@@ -26,6 +27,15 @@
   --font-small: 13px;
 
   --line-height: 19px;
+}
+
+/* This helps with browser support for all devices*/
+* {
+  box-sizing: border-box;
+}
+
+input[type=checkbox] {
+  visibility: hidden;
 }
 
 .main {
@@ -40,40 +50,85 @@
 .hosts {
   width: 840px;
   margin: 0 auto;
-  /*padding: var(--gutter);*/
+  padding: 0 30px;
 }
 
 .hosts__container {
-
+  display: grid;
+  grid-gap: 0 30px;
+  grid-template-columns: 375px 375px;
 }
 
-.hosts__title {
+.hosts__header {
+  
+}
+
+.hosts__header__title {
   color: var(--black);
-  font-size: var(--font-large);
-  font-family: 'HelveticaNeue-Bold';
+  font-size: var(--font-xlarge);
+  font-family: 'HelveticaNeue-Bold', sans-serif;
   line-height: 43px;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.hosts__header__email {
+  font-size: var(--font-normal);
+  font-family: 'HelveticaNeue', sans-serif;
+  line-height: 22px;
+}
+
+.hosts__header__toggle {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 10%;
+  position: relative;
+  box-shadow: 0px 1px 3px transparent;
+  display: inline-block;
+}
+
+.hosts__header__toggle label {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 10%;
+
+  cursor: pointer;
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  z-index: 1;
+
+  background: var(--white);
+}
+
+.hosts__header__toggle input[type=checkbox]:checked + label {
+  background: var(--green);
 }
 
 .host {
-  width: 315px;
+  width: 375px;
   display: inline-block;
-  background-color: white;
+  background-color: var(--white);
   padding: 30px;
   vertical-align: top;
-}
-
-.host + .host {
-  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .host--list {
-  width: 840px;
+  width: 780px;
+}
+
+.hosts__container--list {
+  display: inherit;
+  grid-template-columns: none;
 }
 
 .host__title {
   margin-top: 0;
   margin-bottom: 23px;
-  font-family: 'HelveticaNeue-Bold';
+  font-family: 'HelveticaNeue-Bold', sans-serif;
   font-size: var(--font-normal);
   line-height: var(--line-height);
 }
@@ -97,7 +152,7 @@ li.host__apps-container__item {
   opacity: 0.62;
   font-size: var(--font-small);
   line-height: var(--line-height);
-  font-family: 'HelveticaNeue-Bold';
+  font-family: 'HelveticaNeue-Bold', sans-serif;
   margin-left: -30px;
   width: 30px;
 }

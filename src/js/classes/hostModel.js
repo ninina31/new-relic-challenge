@@ -6,6 +6,7 @@ export default class Host {
   constructor(name) {
     this.name = name
     this.applications = []
+    this._isSorted = false
   }
 
   /**
@@ -15,6 +16,7 @@ export default class Host {
   */
   addApplication(application) {
     this.applications.push(application)
+    this._isSorted = false
   }
 
   /**
@@ -22,7 +24,7 @@ export default class Host {
   * @param Object application - Application information
   * @return undefined
   */
-  removeApplication(application) {
+  removeApplication(application) { 
     const appIndex = this.applications.indexOf(application)
 
     if (appIndex < 0) return
@@ -38,6 +40,7 @@ export default class Host {
     this.applications.sort((a, b) => {
       return b.apdex - a.apdex
     })
+    this._isSorted = true
   }
 
   /**
@@ -46,7 +49,9 @@ export default class Host {
   * @return [Object] - Array of applications with the desired length 
   */
   getTopAppsByHost(howMany = 25) {
-    this.sortApplications()
+    // This flag is to avoid executing the sort function when it's
+    // not necessary
+    if (!this._isSorted) this.sortApplications()
     return this.applications.slice(0, howMany)
   }
 }

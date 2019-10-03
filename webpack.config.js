@@ -22,7 +22,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [ "style-loader", "css-loader" ]
+        use: [
+          "style-loader",
+          "css-loader",
+          'postcss-loader']
       },
       {
         test: /\.ttf$/,
@@ -30,7 +33,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: './src/css/[hash].[ext]',
+              name: 'fonts/[hash].[ext]',
               outputPath: 'fonts/'
             },
           },
